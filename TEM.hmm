@@ -1,0 +1,46 @@
+#STOCHHMM MODEL FILE
+MODEL INFORMATION
+======================================================
+MODEL_NAME:	TEMPERATURE MODEL
+MODEL_DESCRIPTION:	Taken from CH3 Durbin/Eddy
+MODEL_CREATION_DATE:	July 6,2024
+
+TRACK SYMBOL DEFINITIONS
+======================================================
+DRINK:	1,2,3
+
+STATE DEFINITIONS
+#############################################
+STATE:	
+	NAME:	INIT
+TRANSITION:	STANDARD: P(X)
+	FAIR:	0.5
+	LOADED:	0.5
+#############################################
+STATE:	
+	NAME:	HOT
+	PATH_LABEL:	H
+	GFF_DESC:	Hot
+TRANSITION:	STANDARD: P(X)
+	HOT:	0.9
+	COLD:	0.1
+	END:	1
+EMISSION:	DICE: P(X)
+	ORDER:	0
+@1		2		3
+0.6	0.3	0.1
+#############################################
+STATE:
+	NAME:	COLD
+	PATH_LABEL:	C
+	GFF_DESC:	Cold
+TRANSITION:	STANDARD: P(X)
+	HOT:	0.2
+	COLD:	0.8
+	END:	1
+EMISSION:	DICE: P(X)
+	ORDER:	0
+@1	2	3
+0.2	0.3	0.5
+#############################################
+//END
