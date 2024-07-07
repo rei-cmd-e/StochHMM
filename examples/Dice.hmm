@@ -1,13 +1,13 @@
 #STOCHHMM MODEL FILE
 MODEL INFORMATION
 ======================================================
-MODEL_NAME:	CASINO DICE MODEL
+MODEL_NAME:	TEMPERATURE MODEL
 MODEL_DESCRIPTION:	Taken from CH3 Durbin/Eddy
-MODEL_CREATION_DATE:	August 28,2009
+MODEL_CREATION_DATE:	July 6,2024
 
 TRACK SYMBOL DEFINITIONS
 ======================================================
-DICE:	1,2,3,4,5,6
+DICE:	1,2,3
 
 STATE DEFINITIONS
 #############################################
@@ -18,29 +18,29 @@ TRANSITION:	STANDARD: P(X)
 	LOADED:	0.5
 #############################################
 STATE:	
-	NAME:	FAIR
-	PATH_LABEL:	F
-	GFF_DESC:	Fair
+	NAME:	HOT
+	PATH_LABEL:	H
+	GFF_DESC:	Hot
 TRANSITION:	STANDARD: P(X)
-	FAIR:	0.95
-	LOADED:	0.05
+	HOT:	0.9
+	COLD:	0.1
 	END:	1
 EMISSION:	DICE: P(X)
 	ORDER:	0
-@1		2		3		4		5		6
-0.167	0.167	0.167	0.167	0.167	0.167
+@1		2		3
+0.6	0.3	0.1	
 #############################################
 STATE:
-	NAME:	LOADED
-	PATH_LABEL:	L
-	GFF_DESC:	Loaded
+	NAME:	COLD
+	PATH_LABEL:	C
+	GFF_DESC:	Cold
 TRANSITION:	STANDARD: P(X)
-	FAIR:	0.1
-	LOADED:	0.9
-	END:	1
+	HOT:	0.2
+	LOADED:	0.8
+	COLD:	1
 EMISSION:	DICE: P(X)
 	ORDER:	0
-@1	2	3	4	5	6	
-0.1	0.1	0.1	0.1	0.1	0.5
+@1	2	3	
+0.2	0.3	0.5
 #############################################
 //END
